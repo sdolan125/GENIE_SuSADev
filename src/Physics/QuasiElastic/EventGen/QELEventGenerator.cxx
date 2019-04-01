@@ -155,6 +155,7 @@ void QELEventGenerator::ProcessEventRecord(GHepRecord * evrec) const
 
         // First, throw Fermi momentum & removal energy from the nuclear model pdfs
         fNuclModel->GenerateNucleon(*tgt, hitNucPos);
+        double w    = fNuclModel->RemovalEnergy();
 
         // The nucleon is now accessed in the CalculateXSec method
         //        TVector3 p3 = fNuclModel->Momentum3();
@@ -374,6 +375,7 @@ void QELEventGenerator::ProcessEventRecord(GHepRecord * evrec) const
             GHepStatus_t ist = (tgt->IsNucleus()) ? 
                 kIStHadronInTheNucleus : kIStStableFinalState;
             evrec->AddParticle(interaction->RecoilNucleonPdg(), ist, evrec->HitNucleonPosition(),-1,-1,-1, interaction->KinePtr()->HadSystP4(), x4l);
+            //evrec->HitNucleon()->SetRemovalEnergy(w);
 
             // Store struck nucleon momentum and binding energy
             TLorentzVector p4ptr = interaction->InitStatePtr()->TgtPtr()->HitNucP4();

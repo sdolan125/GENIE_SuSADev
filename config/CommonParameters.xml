@@ -123,8 +123,14 @@ University of Liverpool
     empirical formula.
   Currently, if you explicitly specify a binding energy for a nucleus then the same value will
   be used for all isotopes.
-  -->
+
+  Old Default
   <param type="double" name="RFG-MomentumCutOff">              0.5000 </param>
+
+  Remove BR tail to leave a pure RFG (correct model for SuSA/Nieves 2p2h)
+  <param type="double" name="RFG-MomentumCutOff">              0.0001 </param>
+  -->
+  <param type="double" name="RFG-MomentumCutOff">              0.0001 </param>
   <param type="double" name="RFG-NucRemovalE@Pdg=1000030060">  0.0170 </param> <!-- Li6    -->
   <param type="double" name="RFG-NucRemovalE@Pdg=1000060120">  0.0250 </param> <!-- C12    -->
   <param type="double" name="RFG-NucRemovalE@Pdg=1000080160">  0.0270 </param> <!-- O16    -->
@@ -157,6 +163,10 @@ University of Liverpool
       Probably these should all be moved in the local configurations
  -->
  
+
+ <!-- DEFAULT: <param type="double" name="INUKE-HadStep">           0.05  </param> -->
+ <!-- ExFSI: <param type="double" name="INUKE-HadStep">           0.025  </param> -->
+
  <param_set name="INUKE">
    <param type="double" name="INUKE-NucRemovalE">       0.00  </param>
    <param type="double" name="INUKE-HadStep">           0.05  </param>
@@ -240,6 +250,9 @@ University of Liverpool
    <param type="double" name="QEL-Ma"> 0.990 </param>
    <param type="double" name="QEL-Mv"> 0.840 </param>
 
+   <!--  Q3 max for hadrontensors model    -->
+   <param type="double" name="QEL-Q3Max"> 2.0 </param>
+
  </param_set>
 
  <param_set name="MagnMoments">
@@ -254,7 +267,11 @@ University of Liverpool
 
  <param_set name="MultiNucleons">
    <!--  Q3 max for 2p2h model    -->
-   <param type="double" name="NSV-Q3Max"> 1.2 </param>
+   <param type="double" name="NSV-Q3Max"> 2.0 </param>
+   <!--
+   <param type="double" name="NSV-Q3Max"> 1.2 </param> // SuSAv2
+   <param type="double" name="NSV-Q3Max"> 2.0 </param> // Nieves
+   -->
  </param_set>
 
  <param_set name="ElasticFF">

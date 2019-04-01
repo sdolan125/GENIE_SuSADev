@@ -64,6 +64,12 @@ InteractionList *
       Interaction * interaction = Interaction::MECCC(tgtpdg, nupdg, 0.0);
       intlist->push_back(interaction);
   }
+
+  if(!fSetDiNucleonCodeEM&&fIsEM) {
+   LOG("IntLst", pWARN) << "fIsCC(val) = " << fIsCC;
+      Interaction * interaction = Interaction::MECEM(tgtpdg, nupdg, 0.0);
+      intlist->push_back(interaction);
+  }
     
   const int nc = 3;
   const int nucleon_cluster[nc] = { 
@@ -104,7 +110,7 @@ InteractionList *
        intlist->push_back(interaction);
      }//NC?
      else
-       if(fIsEM) {
+       if(fIsEM&&fSetDiNucleonCodeEM) {
 	 LOG("IntLst", pWARN) << "fIsEM = " << fIsEM << "  ncpdg = " << ncpdg;
 	 Interaction * interaction = 
 	   Interaction::MECEM(tgtpdg,ncpdg,nupdg,0);
@@ -134,6 +140,7 @@ void MECInteractionListGenerator::LoadConfigData(void)
   GetParamDef( "is-EM", fIsEM, false ) ;
 
   GetParam( "SetDiNucleonCode", fSetDiNucleonCode ) ;
+  GetParam( "SetDiNucleonCodeEM", fSetDiNucleonCodeEM ) ;
 
 }
 //____________________________________________________________________________

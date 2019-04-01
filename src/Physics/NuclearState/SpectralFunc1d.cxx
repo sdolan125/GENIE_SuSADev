@@ -165,7 +165,7 @@ void SpectralFunc1d::LoadConfig(void)
   // Currently I have spectral functions for C12 and Fe56 only.
   //
   string data_dir = 
-      string(gSystem->Getenv("GENIE")) + string("/data/spectral_functions/");
+      string(gSystem->Getenv("GENIE")) + string("/data/evgen/nucl/spectral_functions/");
 
   string c12_sf1dk_file  = data_dir + "benhar-sf1dk-12c.data";
   string fe56_sf1dk_file = data_dir + "benhar-sf1dk-56fe.data";
