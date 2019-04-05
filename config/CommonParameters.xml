@@ -250,8 +250,16 @@ University of Liverpool
    <param type="double" name="QEL-Ma"> 0.990 </param>
    <param type="double" name="QEL-Mv"> 0.840 </param>
 
+   <!--  Stuff for SuSAv2 1p1h implementation   -->
+
    <!--  Q3 max for hadrontensors model    -->
    <param type="double" name="QEL-Q3Max"> 2.0 </param>
+
+   <!--  Force bound nucleons in SuSAv2 implementation -->
+   <param type="bool" name="QEL-ForceBound"> false </param>
+
+   <!--  Force fixed Eb in SuSAv2 implementation -->
+   <param type="bool" name="QEL-ForceEbFromModel"> false </param>
 
  </param_set>
 
